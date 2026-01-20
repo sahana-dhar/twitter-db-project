@@ -11,7 +11,7 @@ import pandas as pd
 class DBUtils:
 
     def __init__(self, database):
-        """ Connect to SQLite database file.
+        """ Connect to database file.
         """
         self.con = sqlite3.connect(database)
 
