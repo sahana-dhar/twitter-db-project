@@ -1,1 +1,1 @@
-## helper functions/API
+## helper functions
