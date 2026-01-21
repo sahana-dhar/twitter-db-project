@@ -13,7 +13,7 @@ def create_database():
         CREATE TABLE TWEET (
             tweet_id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER,
-            tweet_ts DATETIME DEFAULT CURRENT_TIMESTAMP,
+            tweet_ts DATETIME,
             tweet_text VARCHAR(140)) """)
     
     cursor.execute("""
@@ -41,7 +41,7 @@ def load_follows():
     cursor.executemany("INSERT INTO FOLLOWS VALUES (?, ?)", follows_data)
     conn.commit()
     conn.close()
-
+    
     print(f"{len(follows_data)} follows inserted")
 
 if __name__ == "__main__":
