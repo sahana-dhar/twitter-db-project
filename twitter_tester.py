@@ -1,6 +1,5 @@
 ## testing the two separate functions
 
-
 import os
 from twitter_api import TwitterAPI
 from twitter_objects import Tweet, Follows
