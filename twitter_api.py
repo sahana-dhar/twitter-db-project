@@ -1,4 +1,12 @@
-## api
+"""
+filename: twitter_api.py
+
+description: Twitter API implementation using SQLite database.
+Provides methods for 
+    - posting tweets
+    - retrieving timelines
+    - retrieving all users
+"""
 from twitter_utils import DBUtils
 from twitter_objects import Tweet, Follows
 
