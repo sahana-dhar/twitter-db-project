@@ -10,14 +10,16 @@ def main():
     start_time = time.time()
     # Authenticate
     api = TwitterAPI()
-    ex_user = api.getAllUsers()[0]
+    # ex_user = api.getAllUsers()[0]
+    ex_user = 1
+    ex_user2 = 2
 
     # post new tweet
     api.postTweet(user_id=ex_user, tweet_text="hello tweet world")
     api.postTweet(user_id=ex_user, tweet_text="hello tweet world 2")
 
     # Get home timeline
-    tweets_timeline = api.getHomeTimeline(ex_user)
+    tweets_timeline = api.getHomeTimeline(ex_user2)
     print('home timeline')
     print(f'time:{time.time() - start_time:.4f}s')
     for t in tweets_timeline:
