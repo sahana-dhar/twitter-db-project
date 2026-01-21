@@ -4,6 +4,7 @@
 import os
 from twitter_api import TwitterAPI
 from twitter_objects import Tweet, Follows
+import time
 
 def main():
     print('test')
@@ -22,10 +23,6 @@ def main():
     print(f'time:{time.time() - start_time:.4f}s')
     for t in tweets_timeline:
         print(t)
-
-    # post new tweet
-    twee = Tweet(ex_user, "hello tweet world")
-    api.postTweet(twee)
 
 
 if __name__ == '__main__':
