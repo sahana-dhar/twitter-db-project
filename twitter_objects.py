@@ -1,5 +1,9 @@
-## object classes
+"""
+filename: twitter_objects.py
 
+description: file to create our two objects, Tweet and Follows, as class
+    objects with the given parameters 
+"""
 
 class Tweet:
 
@@ -14,7 +18,3 @@ class Follows:
     def __init__(self, follower_id, followee_id):
         self.follower_id = follower_id
         self.followee_id = followee_id
-
-    # def __str__(self):
-    #     return f"Doctor: {self.first} {self.last} ({self.specialty})"
-
