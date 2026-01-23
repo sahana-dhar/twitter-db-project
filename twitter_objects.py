@@ -3,6 +3,8 @@ filename: twitter_objects.py
 
 description: file to create our two objects, Tweet and Follows, as class
     objects with the given parameters 
+
+Written by Anya
 """
 
 class Tweet:

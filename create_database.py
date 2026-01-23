@@ -3,6 +3,8 @@ filename: create_database.py
 
 description: Setup script for sqlite Twitter database. 
 Creates database schema, tables, indexes, and loads initial follower relationships from CSV.
+
+Written by Sahana
 """
 import sqlite3
 import csv

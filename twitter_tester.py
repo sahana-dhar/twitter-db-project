@@ -21,7 +21,8 @@ def main():
     """
     # use sample tweets file
     csv_file = 'tweets_sample.csv'
-    count_tweets = 0 # starting count
+    # start count
+    count_tweets = 0
 
     # open file and post as many tweets as possible
     with open(csv_file, 'r', encoding='utf-8') as f:
@@ -37,26 +38,35 @@ def main():
             else:
                 break
 
+        end_time = time.time()
+    duration = end_time - start_time
+
     print(f'tweets posted: {count_tweets}')
-    print(f'rate: {count_tweets} tweets/sec')
+    print(f'duration: {duration:.4f} sec')
+    print(f'rate: {count_tweets / duration:.2f} tweets/sec')
 
     """
     Test 2: How many timelines can we retrieve per second?
     """
     # list of all users to select from randomly
     all_users = api.getAllUsers()
-    count_timelines = 0 # start count
+    # start count
+    count_timelines = 0
     # start timer for test 2
     start_time = time.time()
 
     # for one second, retrieve as many timelines as possible
     while time.time() - start_time <= 1:
-        random_user = random.choice(all_users)  # select random user
+        # select random user and retrieve timeline
+        random_user = random.choice(all_users)
         tweets_timeline = api.getHomeTimeline(random_user)
-        count_timelines+= 1
+        count_timelines += 1
+    end_time = time.time()
+    duration = end_time - start_time
 
     print(f'timelines retrieved: {count_timelines}')
-    print(f'rate: {count_timelines} timelines/sec')
+    print(f'duration: {duration:.4f} sec')
+    print(f'rate: {count_timelines / duration:.2f} timelines/sec')
 
 if __name__ == '__main__':
     main()

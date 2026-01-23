@@ -6,6 +6,8 @@ Provides methods for
     - posting tweets
     - retrieving timelines
     - retrieving all users
+
+Written by Sahana
 """
 from twitter_utils import DBUtils
 from twitter_objects import Tweet, Follows

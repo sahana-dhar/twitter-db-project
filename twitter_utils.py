@@ -3,6 +3,8 @@ filename: twitter_utils.py
 
 description: A collection of database utilities to make it easier
 to implement a database application (specific for sqlite3 instead of MySQL)
+
+Written by Anya
 """
 
 import sqlite3
