@@ -1,4 +1,15 @@
-# twitter_api_redis.py
+"""
+filename: twitter_api_redis.py
+
+description: Twitter API implementation using Redis.
+Provides methods for 
+    - posting tweets
+    - retrieving timelines
+    - retrieving all users - used in tests
+
+Written by Sahana (postTweet) and Anya (getHomeTimeline)
+"""
+
 import redis
 import time
 from twitter_objects import Tweet
@@ -12,7 +23,7 @@ class TwitterAPI:
         self.tweet_id += 1
         ts = time.time()
         
-        # Store tweet data 
+        # store tweet data as hash  
         self.r.hset(
             f"tweet:{self.tweet_id}",
             mapping={
@@ -21,17 +32,22 @@ class TwitterAPI:
                 "tweet_text": tweet_text
             }
         )
-        self.r.sadd("users", user_id)
+        ## remove? - self.r.sadd("users", user_id)
         
-        # Push tweet to all followers' timelines
+        # push tweet to all followers' timelines
         followers = self.r.smembers(f"followers:{user_id}")
         for follower in followers:
             self.r.lpush(f"timeline:{follower}", self.tweet_id)
-            self.r.ltrim(f"timeline:{follower}", 0, 9) 
+
+            # keep only 10 tweets for faster timeline pulling
+            self.r.ltrim(f"timeline:{follower}", 0, 9)
     
     def getHomeTimeline(self, user_id):
-        # todo: Implement timeline retrieval
-        pass
-    
+        # get tweet_ids for this user's timeline
+        tweet_ids = self.r.lrange(f"timeline:{user_id}", 0, 9)
+
+        # get tweet hashes from all tweet ids to return timeline
+        return [self.r.hgetall(f"tweet:{tweet_id}") for tweet_id in tweet_ids]
+
     def getAllUsers(self):
-        return [int(u) for u in self.r.smembers("users")]
+        return list(self.r.smembers("users")) # return Redis set of users as list
