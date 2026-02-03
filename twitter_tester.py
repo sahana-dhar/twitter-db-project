@@ -47,7 +47,7 @@ def main():
     print(f'duration: {duration:.4f} sec')
     print(f'rate: {count_tweets / duration:.2f} tweets/sec')
 
-    '''"""
+    """
     Test 2: How many timelines can we retrieve per second?
     """
     # list of all users to select from randomly
@@ -68,7 +68,7 @@ def main():
 
     print(f'timelines retrieved: {count_timelines}')
     print(f'duration: {duration:.4f} sec')
-    print(f'rate: {count_timelines / duration:.2f} timelines/sec')'''
+    print(f'rate: {count_timelines / duration:.2f} timelines/sec')
 
 if __name__ == '__main__':
     main()
