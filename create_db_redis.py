@@ -13,7 +13,7 @@ r = redis.Redis(decode_responses=True)
 r.flushdb() # clear existing data 
 
 # load follows data from csv
-with open("follows_sample.csv") as f:
+with open("follows.csv") as f:
     reader = csv.reader(f)
     next(reader)  # skip header
     
@@ -22,13 +22,11 @@ with open("follows_sample.csv") as f:
         
         # create a followers set for each followee_id in Redis
         r.sadd(f"followers:{followee_id}", follower_id)
-        
-        ## remove? - r.sadd(f"following:{follower_id}", followee_id)  - not used in api, only follower is
-
+    
         # add follower_id/followee_id to a users set, Redis automatically removes duplicates
         r.sadd("users", follower_id)
         r.sadd("users", followee_id)
         count += 1
     
-    print(f"Loaded {count} follow relationships into Redis")
+    print(f"Added {count} follows into Redis")
     print(f"Total users: {r.scard('users')}")

@@ -24,7 +24,7 @@ def main():
     Test 1: How many tweets can we post per second?
     """
     # use sample tweets file
-    csv_file = 'tweets_sample.csv'
+    csv_file = 'tweet.csv'
     # start count
     count_tweets = 0
 
